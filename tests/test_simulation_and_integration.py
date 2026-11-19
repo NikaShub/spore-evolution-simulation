@@ -13,7 +13,6 @@ from spore_sim.simulation.phases import ChasePhase, FightPhase
 from tests.conftest import CreatureBuilder
 
 
-
 def test_chase_phase_catches_slower_prey(
     make_creature: CreatureBuilder,
     movement_chain: MovementHandler,
@@ -121,6 +120,7 @@ def test_fight_phase_simultaneous_death(
     assert outcome is OutcomeMessage.PREDATOR_WON
     assert predator.is_alive is False
     assert prey.is_alive is False
+
 
 def test_single_runner_skips_fight_when_prey_escapes_chase(
     make_creature: CreatureBuilder,

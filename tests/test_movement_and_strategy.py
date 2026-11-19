@@ -100,6 +100,7 @@ def test_crawl_handler(
     assert len(CrawlHandler().collect_options(make_creature(stamina=1))) == 1
     assert len(CrawlHandler().collect_options(make_creature(stamina=0))) == 0
 
+
 def test_full_chain_collects_all_valid_options_fully_evolved_creature(
     make_creature: CreatureBuilder,
     movement_chain: MovementHandler,
@@ -171,6 +172,7 @@ def test_legged_creature_degrades(
     assert (
         movement_chain.collect_options(make_creature(legs=2, wings=2, stamina=0)) == []
     )
+
 
 def test_strategies_handle_empty_options(
     greedy_strategy: GreedyMovementStrategy,

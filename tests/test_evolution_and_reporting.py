@@ -32,6 +32,7 @@ def test_preset_factory(
     assert out_pred is pred
     assert out_prey is prey
 
+
 def test_random_factory() -> None:
     config = SimulationConfig(
         predator_start_pos=0,
@@ -66,6 +67,7 @@ def test_random_factory() -> None:
         assert 0 <= prey.legs <= 4
         assert 0 <= prey.wings <= 2
         assert prey.traits == ()
+
 
 def test_random_factory_applies_modifier_order() -> None:
     config_teeth_first = SimulationConfig(

@@ -4,6 +4,7 @@ from spore_sim.domain.decorators import ClawsDecorator, TeethDecorator
 from spore_sim.domain.enums import ClawSize, CreatureRole, TeethSharpness
 from tests.conftest import CreatureBuilder
 
+
 def test_base_creature_initial_state(make_creature: CreatureBuilder) -> None:
     creature = make_creature(
         role=CreatureRole.PREY,
@@ -23,6 +24,7 @@ def test_base_creature_initial_state(make_creature: CreatureBuilder) -> None:
     assert creature.wings == 1
     assert creature.traits == ()
     assert creature.is_alive is True
+
 
 def test_move_by_updates_position__stamina_at_zero(
     make_creature: CreatureBuilder,
