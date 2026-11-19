@@ -34,4 +34,4 @@ class AttackModifierOrder(StrEnum):
 
 class OutcomeMessage(StrEnum):
     PREY_ESCAPED = "Pray ran into infinity"
-    PREDATOR_WON = "Predator won"
+    PREDATOR_WON = "Some R-rated things have happened"
