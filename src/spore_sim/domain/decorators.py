@@ -73,6 +73,7 @@ class ClawsDecorator(CreatureDecorator):
         super().__init__(wrapped)
         self._size = size
 
+
     @property
     def attack_power(self) -> int:
         return self._wrapped.attack_power * self._size.value
