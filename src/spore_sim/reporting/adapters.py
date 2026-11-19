@@ -4,6 +4,7 @@ from typing import Protocol
 from spore_sim.domain.creature import CreatureProtocol
 from spore_sim.domain.enums import OutcomeMessage
 
+
 class SimulationReporter(Protocol):
     def report_simulation_start(self, simulation_index: int) -> None: ...
 
@@ -34,6 +35,7 @@ class ConsoleReporterAdapter:
 
     def report_outcome(self, outcome: OutcomeMessage) -> None:
         self._output(outcome.value)
+
 
 class MemoryReporterAdapter:
     def __init__(self) -> None:

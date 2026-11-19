@@ -11,14 +11,16 @@ from spore_sim.domain.enums import (
     TeethSharpness,
 )
 
+
 class EvolutionFactory(Protocol):
     def create_participants(self) -> tuple[CreatureProtocol, CreatureProtocol]: ...
 
+
 class RandomEvolutionFactory:
     def __init__(
-            self,
-            config: SimulationConfig,
-            rng: random.Random | None = None,
+        self,
+        config: SimulationConfig,
+        rng: random.Random | None = None,
     ) -> None:
         self._config = config
         self._rng = rng if rng is not None else random.Random()
@@ -35,9 +37,8 @@ class RandomEvolutionFactory:
         )
         return predator, prey
 
-
-
-    def _evolve_creature(self,
+    def _evolve_creature(
+        self,
         role: CreatureRole,
         position: int,
     ) -> CreatureProtocol:
@@ -52,7 +53,8 @@ class RandomEvolutionFactory:
         )
         return self._apply_evolution_traits(base)
 
-    def _apply_evolution_traits(self,
+    def _apply_evolution_traits(
+        self,
         creature: CreatureProtocol,
     ) -> CreatureProtocol:
         teeth = self._roll_teeth()
@@ -65,7 +67,7 @@ class RandomEvolutionFactory:
         decorated = self._wrap_claws(creature, claws)
         return self._wrap_teeth(decorated, teeth)
 
-    def _roll_teeth(self):
+    def _roll_teeth(self) -> TeethSharpness | None:
         if self._rng.random() >= self._config.teeth_evolution_chance:
             return None
         return self._rng.choice(list(TeethSharpness))
@@ -75,27 +77,23 @@ class RandomEvolutionFactory:
             return None
         return self._rng.choice(list(ClawSize))
 
-
     @staticmethod
     def _wrap_teeth(
-            creature: CreatureProtocol,
-            sharpness: TeethSharpness | None,
+        creature: CreatureProtocol,
+        sharpness: TeethSharpness | None,
     ) -> CreatureProtocol:
         if sharpness is None:
             return creature
         return TeethDecorator(creature, sharpness)
 
-
     @staticmethod
     def _wrap_claws(
-            creature: CreatureProtocol,
-            size: ClawSize | None,
+        creature: CreatureProtocol,
+        size: ClawSize | None,
     ) -> CreatureProtocol:
         if size is None:
             return creature
         return ClawsDecorator(creature, size)
-
-
 
 
 class PresetEvolutionFactory:
@@ -111,4 +109,3 @@ class PresetEvolutionFactory:
 
     def create_participants(self) -> tuple[CreatureProtocol, CreatureProtocol]:
         return self._predator, self._prey
-
