@@ -67,7 +67,7 @@ class TeethDecorator(CreatureDecorator):
     def attack_power(self) -> int:
         return self._wrapped.attack_power + self._sharpness.value
 
-    class ClawsDecorator(CreatureDecorator):
+class ClawsDecorator(CreatureDecorator):
         def __init__(self, wrapped: CreatureProtocol, size: ClawSize) -> None:
             super().__init__(wrapped)
             self._size = size
