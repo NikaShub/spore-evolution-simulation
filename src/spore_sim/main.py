@@ -44,5 +44,6 @@ def main() -> None:
     for _outcome in batch:
         pass
 
+
 if __name__ == "__main__":
     main()
