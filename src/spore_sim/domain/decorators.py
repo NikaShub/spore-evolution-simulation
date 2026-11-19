@@ -67,15 +67,16 @@ class TeethDecorator(CreatureDecorator):
     def attack_power(self) -> int:
         return self._wrapped.attack_power + self._sharpness.value
 
+
 class ClawsDecorator(CreatureDecorator):
-        def __init__(self, wrapped: CreatureProtocol, size: ClawSize) -> None:
-            super().__init__(wrapped)
-            self._size = size
+    def __init__(self, wrapped: CreatureProtocol, size: ClawSize) -> None:
+        super().__init__(wrapped)
+        self._size = size
 
-        @property
-        def attack_power(self) -> int:
-            return self._wrapped.attack_power * self._size.value
+    @property
+    def attack_power(self) -> int:
+        return self._wrapped.attack_power * self._size.value
 
-        @property
-        def traits(self) -> tuple[str, ...]:
-            return (*self._wrapped.traits, f"Claws(x{self._size.value})")
+    @property
+    def traits(self) -> tuple[str, ...]:
+        return (*self._wrapped.traits, f"Claws(x{self._size.value})")
